@@ -1,0 +1,143 @@
+.container_RegisterPage {
+	background-color: rgba(0, 0, 0, 0.792);
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	z-index: 100;
+	display: flex;
+}
+
+.container2_RegisterPage {
+	margin: auto;
+	background-color: rgb(35, 35, 35);
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	width: 24rem;
+	height: fit-content;
+	padding: 2rem;
+	/* border: 2px solid white; */
+	border-radius: 0.5rem;
+	box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.315),
+		-1px -1px 5px rgba(255, 255, 255, 0.326);
+}
+
+.reg_header_div {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding-bottom: 1rem;
+}
+
+.reg_header_div h1 {
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	width: fit-content;
+	text-decoration: none;
+	color: whitesmoke;
+	margin: auto;
+	padding: 1rem;
+}
+
+.reg_header_div a {
+	font-size: small;
+	color: rgb(85, 156, 255);
+}
+
+.reg_form_div {
+	padding: 1rem;
+}
+
+.reg_form_div input {
+	width: 92%;
+	color: aliceblue;
+	background-color: black;
+	border: 0px;
+	font-size: medium;
+	resize: none;
+	padding: 1rem 1rem;
+	border-radius: 0.3rem;
+	margin-top: 1.5rem;
+}
+
+.reg_submit_div {
+	padding: 1rem;
+}
+
+.reg_submit_div input {
+	width: 100%;
+	height: 2.5rem;
+	background-color: red;
+	border: 0px;
+	border-radius: 0.2rem;
+	font-size: large;
+	font-weight: bold;
+	color: white;
+}
+
+.reg_form_div input:focus {
+	border: 1px solid red !important;
+	box-shadow: 0 0 3px red !important;
+	-moz-box-shadow: 0 0 3px red !important;
+	-webkit-box-shadow: 0 0 3px red !important;
+	color: red;
+}
+
+.divider {
+	border: 1px solid gray;
+	margin: 0.5rem 1rem;
+}
+
+.SignIn_with_Google_div {
+	width: 92%;
+	padding: 1rem;
+}
+
+.SignInWithGooglebtn {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	border-radius: 1rem;
+}
+
+.x_btn {
+	background-color: rgba(28, 28, 28, 0);
+	transition: 2s all;
+	font-size: 1.8rem;
+	font-weight: 100;
+	border: 0px;
+	margin: 0px;
+}
+
+.x_div:hover {
+	background-color: rgb(37, 37, 37);
+	.x_btn {
+		color: rgb(249, 216, 155);
+	}
+}
+
+.x_div {
+	cursor: pointer;
+	border: 0;
+	padding: 0;
+	color: white;
+	background-color: rgb(57, 57, 57);
+	font-size: 1rem;
+	cursor: pointer;
+	border-radius: 3rem;
+	width: 4rem;
+	height: 4rem;
+	margin-top: 2rem;
+	right: 50px;
+	position: absolute;
+	transition: 1s all;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+}
+
+input:focus {
+	outline-offset: 0px !important;
+	outline: none !important;
+}

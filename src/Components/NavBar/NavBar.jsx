@@ -6,13 +6,11 @@ import { RiVideoAddLine } from "react-icons/ri";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { BiUserCircle } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { GoogleLogin } from "react-google-login";
 import { gapi } from "gapi-script";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../actions/auth";
 import Auth from "../../Pages/Auth/Auth";
 
-function NavBar({ toggleDrawer, setEditCreateChannelBtn }) {
+function NavBar({ toggleDrawer, setEditCreateChannelBtn, setIsLogin, setIsRegister }) {
 	
 	const [AuthBtn, setAuthBtn] = useState(false)
 
@@ -25,29 +23,8 @@ function NavBar({ toggleDrawer, setEditCreateChannelBtn }) {
 	// }
 
 	const CurrentUser = useSelector(state=>state.currentUserReducer)
-	console.log(CurrentUser)
-	useEffect(() => {
-		function start() {
-			gapi.client.init({
-				clientId:
-					"426950288273-7ugsv5csdcck4lb7ivu4r79aq3t384ah.apps.googleusercontent.com",
-				scope: "email",
-			});
-		}
-		gapi.load("client:auth2", start);
-	}, []);
 
-	const dispatch = useDispatch();
 
-	const onSuccess = (response) => {
-		const Email = response?.profileObj.email;
-		console.log(Email);
-		dispatch(login({ email: Email }));
-	};
-
-	const onFailure = (response) => {
-		console.log(response);
-	};
 
 	return (
 		<>
@@ -85,15 +62,15 @@ function NavBar({ toggleDrawer, setEditCreateChannelBtn }) {
 					{CurrentUser ? (
 						<div className="Channel_logo_App" onClick={()=> setAuthBtn(true)}>
 							<p className="fstChar_logo_App">
-								{CurrentUser.result.name ? (
+								{CurrentUser?.result.name ? (
 									<>
-										{CurrentUser.result.name
+										{CurrentUser?.result?.name
 											.charAt(0)
 											.toUpperCase()}
 									</>
 								) : (
 									<>
-										{CurrentUser.result.email
+										{CurrentUser?.result?.email
 											.charAt(0)
 											.toUpperCase()}
 									</>
@@ -102,20 +79,13 @@ function NavBar({ toggleDrawer, setEditCreateChannelBtn }) {
 						</div>
 					) : (
 						<>
-							<GoogleLogin
-								clientIds="426950288273-7ugsv5csdcck4lb7ivu4r79aq3t384ah.apps.googleusercontent.com"
-								onSuccess={onSuccess}
-								onFailure={onFailure}
-								render={(renderProps) => (
-									<p
-										onClick={renderProps.onClick}
+							<p
+										onClick={()=>{setIsLogin(true)}}
 										className="Auth_Btn"
 									>
 										<BiUserCircle size={22} />
 										<p>SignIn</p>
 									</p>
-								)}
-							/>
 						</>
 					)}
 				</div>

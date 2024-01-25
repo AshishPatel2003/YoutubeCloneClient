@@ -31,7 +31,8 @@ function CreateEditChannel({ setEditCreateChannelBtn }) {
             }));
             setEditCreateChannelBtn(false)
             setTimeout(() => {
-                dispatch(login({email: CurrentUser?.result.email}));
+                dispatch(login({email: CurrentUser?.result.email}))
+
             }, 5000);
         }
     };

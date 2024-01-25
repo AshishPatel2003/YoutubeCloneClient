@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import CreateEditChannel from "./Pages/Channel/CreateEditChannel";
 import VideoUpload from "./Pages/VideoUpload/VideoUpload";
+import RegisterPage from "./Pages/RegisterPage/RegsiterPage.jsx";
+import LoginPage from "./Pages/LoginPage/LoginPage.jsx";
 import { useDispatch } from "react-redux";
 import { fetchAllChannel } from "./actions/channelUser";
 import { getAllVideo } from "./actions/video";
@@ -15,18 +17,15 @@ import { getAllHistory } from "./actions/history";
 import { getAllComments } from "./actions/comments";
 
 function App() {
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchAllChannel());
-	dispatch(getAllVideo());
-	dispatch(getAlllikedVideo());
-	dispatch(getAllwatchLater());
-	dispatch(getAllHistory());
-	dispatch(getAllComments())
-
-  }, [dispatch])
-  
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(fetchAllChannel());
+		dispatch(getAllVideo());
+		dispatch(getAlllikedVideo());
+		dispatch(getAllwatchLater());
+		dispatch(getAllHistory());
+		dispatch(getAllComments());
+	}, [dispatch]);
 
 	const [toggleDrawerSidebar, setToggleDrawerSidebar] = useState({
 		display: "none",
@@ -46,6 +45,8 @@ function App() {
 
 	const [vidUploadPage, setVidUploadPage] = useState(false);
 	const [EditCreateChannelBtn, setEditCreateChannelBtn] = useState(false);
+	const [isLogin, setIsLogin] = useState(false);
+	const [isRegister, setIsRegister] = useState(false);
 
 	return (
 		<Router>
@@ -57,10 +58,25 @@ function App() {
 					setEditCreateChannelBtn={setEditCreateChannelBtn}
 				/>
 			)}
+			{isLogin && (
+				<LoginPage
+					setIsLogin={setIsLogin}
+					setIsRegister={setIsRegister}
+				/>
+			)}
+			{isRegister && (
+				<RegisterPage
+					setIsLogin={setIsLogin}
+					setIsRegister={setIsRegister}
+				/>
+			)}
 
 			<NavBar
 				setEditCreateChannelBtn={setEditCreateChannelBtn}
 				toggleDrawer={toggleDrawer}
+				setIsLogin={setIsLogin}
+					setIsRegister={setIsRegister}
+				
 			/>
 
 			<DrawerSidebar

@@ -11,7 +11,6 @@ function Auth({ User, setAuthBtn, setEditCreateChannelBtn }) {
 
 	const onLogoutSuccess = () => {
 		dispatch(setCurrentUser(null));
-
 		alert("Log Out Successfully");
 	};
 

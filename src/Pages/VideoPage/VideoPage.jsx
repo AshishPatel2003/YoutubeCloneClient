@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { addToHistory } from "../../actions/history";
 import { viewVideo } from "../../actions/video";
+import urls from "./../../data/url.json"
 
 function VideoPage() {
 	const { vid } = useParams();
@@ -50,7 +51,7 @@ function VideoPage() {
 				<div className="container2_videoPage">
 					<div className="video_display_screen_videoPage">
 						<video
-							src={`https://youtubecloneserver.onrender.com/${vv?.filePath}`}
+							src={`${urls.local_server_url}${vv?.filePath}`}
 							className={"video_ShowVideo_videoPage"}
 							controls
 							autoPlay

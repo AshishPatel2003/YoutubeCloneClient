@@ -2,13 +2,14 @@ import React from 'react'
 import "./ShowVideo.css"
 import { Link } from 'react-router-dom'
 import moment from 'moment'
+import urls from "./../../data/url.json"
 
 function ShowVideo({vid}) {
     // console.log(vid)
   return (
     <>
         <Link to={`/videopage/${vid?._id}`}>
-            <video src={`https://youtubecloneserver.onrender.com/${vid?.filePath}`} className = "video_ShowVideo" />
+            <video src={`${urls.local_server_url}${vid?.filePath}`} className = "video_ShowVideo" />
             <div className="video_description">
                 <div className="Channel_logo_App">
                     <div className="fstChar_logo_App">

@@ -8,6 +8,7 @@ export const login=(authData)=>async(dispatch)=>{
         dispatch({type:"AUTH", data})
         dispatch(setCurrentUser(JSON.parse(localStorage.getItem('Profile'))))
     } catch (error) {
-        alert(error)
+        console.log(error.response.data.mess)
+        alert(error.response.data.mess);
     }
 }

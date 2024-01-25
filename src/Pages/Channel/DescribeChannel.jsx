@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaEdit, FaUpload } from "react-icons/fa";
 import "./DescribeChannel.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../actions/auth";
+import { fetchAllChannel } from "../../actions/channelUser";
 
 function DescribeChannel({setVidUploadPage, Cid, setEditCreateChannelBtn }) {
 
 	
+	
+	const dispatch = useDispatch();
+	useEffect(()=>{
+		dispatch(login({email: CurrentUser?.result.email}))
+		dispatch(fetchAllChannel());
+	}, [])
+	
 	const channels = useSelector(state=>state.channelReducers);
 
 	const CurrentUser = useSelector(state=>state.currentUserReducer);
-
 	console.log("Channel", channels);
 	console.log("Ashish", CurrentUser);
 

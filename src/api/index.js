@@ -1,5 +1,6 @@
 import axios from "axios";
-const API = axios.create({ baseURL: `https://youtubecloneserver.onrender.com/` });
+import urls from "./../data/url.json";
+const API = axios.create({ baseURL: urls.local_server_url });
 API.interceptors.request.use((req) => {
 	if (localStorage.getItem("Profile")) {
 		req.headers.authorization = `Bearer ${JSON.parse(
